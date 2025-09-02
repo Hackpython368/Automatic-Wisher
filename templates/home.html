@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birthday Wishes Editor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4a3f35;
+      margin-bottom: 30px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      padding-bottom: 100px; /* space so button doesn't overlap last row */
+      margin: auto;
+    }
+
+    .card {
+      background-color: #fffaf0;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      color: #d2691e;
+      margin-bottom: 8px;
+    }
+
+    .card .date {
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #333;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fffaf0;
+      border-radius: 12px;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      animation: zoomIn 0.3s ease-in-out;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #d2691e;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .modal-content button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #f8b500;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #e1a400;
+    }
+
+    .close {
+      float: right;
+      cursor: pointer;
+      font-size: 1.4em;
+      color: #888;
+    }
+
+    .add-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 30px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10; /* Lower z-index to avoid overlapping modal/cards */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.add-btn:hover {
+  transform: translateX(-50%) scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffe600;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <h1>🎉 Birthday Wishes 🎉</h1>
+
+  <div class="grid-container" id="cardContainer">
+    <!-- Cards (clickable) -->
+  </div>
+
+  <!-- Modal for Editing -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Edit Birthday Card</h2>
+      <input type="text" id="editName" placeholder="Name" />
+      <input type="text" id="editNickname" placeholder="Nickname" />
+      <input type="date" id="editDate" />
+      <input type="tel" id="editPhone" placeholder="Phone Number" />
+      <textarea id="editMessage" rows="4" placeholder="Message"></textarea>
+      <button onclick="saveChanges()">Save</button>
+    </div>
+</div>
+
+<!-- Add Button -->
+<!-- Emoji icon -->
+<button class="add-btn" onclick="openModal(null)">➕</button>
+
+
+
+  <script>
+   const cardData = [
+  { name: "Ali", nickname: "Alu", date: "2025-09-02", phone: "03001234567", message: "Happy Birthday! 🎉" },
+  { name: "Fatima", nickname: "Fatoo", date: "2025-08-15", phone: "03007654321", message: "Wishing you joy and peace! 🌸" },
+  { name: "Ahmed", nickname: "Adi", date: "2025-09-23", phone: "03121234567", message: "Cheers to your big day! 🥳" },
+  { name: "Zara", nickname: "Zuzu", date: "2025-10-09", phone: "03331234567", message: "May your wishes come true! 🎈" },
+  { name: "Usman", nickname: "Mani", date: "2025-09-30", phone: "03211234567", message: "Keep smiling always! 😊" },
+  { name: "Noor", nickname: "Noori", date: "2025-11-11", phone: "03451234567", message: "Brightest wishes on your birthday! ✨" },
+  { name: "Bilal", nickname: "Bilu", date: "2025-07-19", phone: "03111234567", message: "Have a fantastic year ahead! 🚀" },
+  { name: "Hira", nickname: "Hiri", date: "2025-12-01", phone: "03461234567", message: "Let’s celebrate you! 💃" },
+  { name: "Yasir", nickname: "Yas", date: "2025-06-22", phone: "03081234567", message: "Wishing health, wealth & cake! 🍰" },
+];
+
+
+    const cardContainer = document.getElementById("cardContainer");
+    const modal = document.getElementById("editModal");
+    let currentEditIndex = null;
+
+    // Render all cards
+    function renderCards() {
+      cardContainer.innerHTML = "";
+      cardData.forEach((data, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <h3>${data.name}</h3>
+          <div class="date">${data.date}</div>
+          <p>${data.message}</p>
+        `;
+        card.onclick = () => openModal(index);
+        cardContainer.appendChild(card);
+      });
+    }
+
+    // Open modal with existing data
+    function openModal(index) {
+      if(index==null){
+        modal.querySelector('h2').innerText = "Add Birthday Card"
+        document.getElementById("editName").value = "Name";
+        document.getElementById("editNickname").value = "Nick Name";
+        document.getElementById("editDate").value = "DD-MM-YYYY";
+        document.getElementById("editPhone").value = "+91 XXXXXXXXXX";
+        document.getElementById("editMessage").value = "Text ......";
+        modal.style.display = "flex";
+      }
+      currentEditIndex = index;
+      const data = cardData[index];
+      document.getElementById("editName").value = data.name;
+      document.getElementById("editNickname").value = data.nickname;
+      document.getElementById("editDate").value = data.date;
+      document.getElementById("editPhone").value = data.phone;
+      document.getElementById("editMessage").value = data.message;
+      modal.style.display = "flex";
+    }
+
+    // Close modal
+    function closeModal() {
+      modal.style.display = "none";
+      modal.querySelector('h2').innerText = "Edit Birthday Card"
+    }
+
+    // Save changes to card
+    function saveChanges() {
+      const data = cardData[currentEditIndex];
+      data.name = document.getElementById("editName").value;
+      data.nickname = document.getElementById("editNickname").value;
+      data.date = document.getElementById("editDate").value;
+      data.phone = document.getElementById("editPhone").value;
+      data.message = document.getElementById("editMessage").value;
+      closeModal();
+      renderCards();
+    }
+
+    // Initial render
+    renderCards();
+  </script>
+</body>
+</html>
