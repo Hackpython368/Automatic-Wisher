@@ -185,17 +185,7 @@
 
 
   <script>
-   const cardData = [
-  { name: "Ali", nickname: "Alu", date: "2025-09-02", phone: "03001234567", message: "Happy Birthday! 🎉" },
-  { name: "Fatima", nickname: "Fatoo", date: "2025-08-15", phone: "03007654321", message: "Wishing you joy and peace! 🌸" },
-  { name: "Ahmed", nickname: "Adi", date: "2025-09-23", phone: "03121234567", message: "Cheers to your big day! 🥳" },
-  { name: "Zara", nickname: "Zuzu", date: "2025-10-09", phone: "03331234567", message: "May your wishes come true! 🎈" },
-  { name: "Usman", nickname: "Mani", date: "2025-09-30", phone: "03211234567", message: "Keep smiling always! 😊" },
-  { name: "Noor", nickname: "Noori", date: "2025-11-11", phone: "03451234567", message: "Brightest wishes on your birthday! ✨" },
-  { name: "Bilal", nickname: "Bilu", date: "2025-07-19", phone: "03111234567", message: "Have a fantastic year ahead! 🚀" },
-  { name: "Hira", nickname: "Hiri", date: "2025-12-01", phone: "03461234567", message: "Let’s celebrate you! 💃" },
-  { name: "Yasir", nickname: "Yas", date: "2025-06-22", phone: "03081234567", message: "Wishing health, wealth & cake! 🍰" },
-];
+   const cardData = {{ data }};
 
 
     const cardContainer = document.getElementById("cardContainer");
@@ -209,9 +199,9 @@
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
-          <h3>${data.name}</h3>
-          <div class="date">${data.date}</div>
-          <p>${data.message}</p>
+          <h3>${data[0]}</h3>
+          <div class="date">${data[2]}</div>
+          <p>${data[4]}</p>
         `;
         card.onclick = () => openModal(index);
         cardContainer.appendChild(card);
