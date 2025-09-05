@@ -1,16 +1,138 @@
-[
-    [
-        "Alice",
-        "AJ",
-        "1990-05-12",
-        "+1234567890",
-        "Hello!"
-    ],
-    [
-        "Bob",
-        "Bobby",
-        "1985-11-23",
-        "+1987654321",
-        "Hey!"
-    ]
-]
+{
+  "January": [
+    {
+      "name": "Diana",
+      "date": "1998-01-17",
+      "phone": "+911234567890",
+      "message": "On your birthday, may all your dreams come true. Keep shining and smiling, Diana!"
+    }
+  ],
+  "February": [
+    {
+      "name": "Mike",
+      "date": "1997-02-02",
+      "phone": "+919876543210",
+      "message": "Today is all about you! May your heart be light and your presents be heavy, Mike!"
+    }
+  ],
+  "March": [
+    {
+      "name": "Hannah",
+      "date": "1993-03-05",
+      "phone": "+911112223334",
+      "message": "May your birthday sparkle with moments of love, laughter, and the people you care about most. Happy Birthday, Hannah!"
+    },
+    {
+      "name": "Priya",
+      "date": "1995-03-10",
+      "phone": "+919998887776",
+      "message": "Another year, another adventure. May your path ahead be full of success and smiles. Happy Birthday, Priya!"
+    }
+  ],
+  "May": [
+    {
+      "name": "Alice",
+      "date": "1990-05-12",
+      "phone": "+911234567891",
+      "message": "Wishing you a day filled with love, laughter, and everything you enjoy most. Happy Birthday, Alice!"
+    },
+    {
+      "name": "Sara",
+      "date": "1993-05-22",
+      "phone": "+919876543219",
+      "message": "Happy Birthday, Sara! May your day be full of sunshine, rainbows, and good vibes only!"
+    }
+  ],
+  "June": [
+    {
+      "name": "Fiona",
+      "date": "1991-06-21",
+      "phone": "+911112223335",
+      "message": "Sending warm wishes and endless hugs your way. May your day be as wonderful as you are, Fiona!"
+    },
+    {
+      "name": "Nina",
+      "date": "1999-06-30",
+      "phone": "+919998887777",
+      "message": "Wishing you endless joy, unforgettable moments, and all the love in the world. Happy Birthday, Nina!"
+    }
+  ],
+  "July": [
+    {
+      "name": "Julia",
+      "date": "1994-07-14",
+      "phone": "+911234567892",
+      "message": "Birthdays are nature’s way of telling us to eat more cake. Have a fantastic one, Julia!"
+    }
+  ],
+  "August": [
+    {
+      "name": "Charlie",
+      "date": "1992-08-03",
+      "phone": "+919876543220",
+      "message": "May your special day be filled with memories, joy, and all the cake you can eat. Happy Birthday, Charlie!"
+    },
+    {
+      "name": "Oscar",
+      "date": "1987-08-19",
+      "phone": "+911112223336",
+      "message": "You make life better just by being in it. Wishing you the happiest of birthdays, Oscar!"
+    }
+  ],
+  "September": [
+    {
+      "name": "Ethan",
+      "date": "1995-09-30",
+      "phone": "+919998887778",
+      "message": "Another year older, wiser, and even more awesome. Have an unforgettable birthday, Ethan!"
+    },
+    {
+      "name": "Tom",
+      "date": "1996-09-07",
+      "phone": "+911234567893",
+      "message": "Celebrate like there’s no tomorrow because birthdays are meant to be wild and free! Enjoy, Tom!"
+    }
+  ],
+  "October": [
+    {
+      "name": "Ian",
+      "date": "1996-10-25",
+      "phone": "+919876543221",
+      "message": "Here’s to more life, more love, and more amazing adventures. Enjoy your special day, Ian!"
+    },
+    {
+      "name": "Uma",
+      "date": "1992-10-11",
+      "phone": "+911112223337",
+      "message": "To one of the most amazing people I know — may your birthday be as kind and beautiful as you are, Uma!"
+    }
+  ],
+  "November": [
+    {
+      "name": "Bob",
+      "date": "1985-11-23",
+      "phone": "+919998887779",
+      "message": "Hope your birthday is just the beginning of a year full of happiness and success. Cheers, Bob!"
+    },
+    {
+      "name": "Lara",
+      "date": "1988-11-09",
+      "phone": "+911234567894",
+      "message": "You deserve nothing but the best on your birthday and always. Have a fabulous day, Lara!"
+    },
+    {
+      "name": "Raj",
+      "date": "1991-11-01",
+      "phone": "+919876543222",
+      "message": "Here’s to a year of new experiences, challenges, and achievements. Wishing you greatness, Raj!"
+    }
+  ],
+  "December": [
+    {
+      "name": "George",
+      "date": "1989-12-12",
+      "phone": "+911112223338",
+      "message": "Wishing you strength for today and hope for tomorrow. Happy Birthday to a true legend, George!"
+    }
+  ]
+}
