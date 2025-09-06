@@ -106,151 +106,34 @@
     <div class="card">
       <h3>{{ j['name'] }}</h3>
       <div class="date">{{ j['date'] }}</div>
-      <p>{{ j[message] }}</p>
+      <p>{{ j['message'] }}</p>
     </div>
     {% endfor %}
   </div>
   {% endfor %}
-  <!-- February 
-  <h2 class="month">February</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Mike (Mikey)</h3>
-      <div class="date">1997-02-02</div>
-      <p>Today is all about you! May your heart be light and your presents be heavy, Mike!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">March</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Hannah (Hanny)</h3>
-      <div class="date">1993-03-05</div>
-      <p>May your birthday sparkle with moments of love, laughter, and the people you care about most. Happy Birthday, Hannah!</p>
-    </div>
-    <div class="card">
-      <h3>Priya (P)</h3>
-      <div class="date">1995-03-10</div>
-      <p>Another year, another adventure. May your path ahead be full of success and smiles. Happy Birthday, Priya!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">May</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Alice (AJ)</h3>
-      <div class="date">1990-05-12</div>
-      <p>Wishing you a day filled with love, laughter, and everything you enjoy most. Happy Birthday, Alice!</p>
-    </div>
-    <div class="card">
-      <h3>Sara (S)</h3>
-      <div class="date">1993-05-22</div>
-      <p>Happy Birthday, Sara! May your day be full of sunshine, rainbows, and good vibes only!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">June</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Fiona (Fi)</h3>
-      <div class="date">1991-06-21</div>
-      <p>Sending warm wishes and endless hugs your way. May your day be as wonderful as you are, Fi!</p>
-    </div>
-    <div class="card">
-      <h3>Nina (Nins)</h3>
-      <div class="date">1999-06-30</div>
-      <p>Wishing you endless joy, unforgettable moments, and all the love in the world. Happy Birthday, Nina!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">July</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Julia (Jules)</h3>
-      <div class="date">1994-07-14</div>
-      <p>Birthdays are nature’s way of telling us to eat more cake. Have a fantastic one, Jules!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">August</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Charlie (Chuck)</h3>
-      <div class="date">1992-08-03</div>
-      <p>May your special day be filled with memories, joy, and all the cake you can eat. Happy Birthday, Chuck!</p>
-    </div>
-    <div class="card">
-      <h3>Oscar (Ozzy)</h3>
-      <div class="date">1987-08-19</div>
-      <p>You make life better just by being in it. Wishing you the happiest of birthdays, Oscar!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">September</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Ethan (E)</h3>
-      <div class="date">1995-09-30</div>
-      <p>Another year older, wiser, and even more awesome. Have an unforgettable birthday, Ethan!</p>
-    </div>
-    <div class="card">
-      <h3>Tom (Tommy)</h3>
-      <div class="date">1996-09-07</div>
-      <p>Celebrate like there’s no tomorrow because birthdays are meant to be wild and free! Enjoy, Tommy!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">October</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Ian (I)</h3>
-      <div class="date">1996-10-25</div>
-      <p>Here’s to more life, more love, and more amazing adventures. Enjoy your special day, Ian!</p>
-    </div>
-    <div class="card">
-      <h3>Uma (Umi)</h3>
-      <div class="date">1992-10-11</div>
-      <p>To one of the most amazing people I know — may your birthday be as kind and beautiful as you are, Uma!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">November</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Bob (Bobby)</h3>
-      <div class="date">1985-11-23</div>
-      <p>Hope your birthday is just the beginning of a year full of happiness and success. Cheers, Bobby!</p>
-    </div>
-    <div class="card">
-      <h3>Lara (Lari)</h3>
-      <div class="date">1988-11-09</div>
-      <p>You deserve nothing but the best on your birthday and always. Have a fabulous day, Lara!</p>
-    </div>
-    <div class="card">
-      <h3>Raj (RJ)</h3>
-      <div class="date">1991-12-01</div>
-      <p>Here’s to a year of new experiences, challenges, and achievements. Wishing you greatness, Raj!</p>
-    </div>
-  </div>
-
-  
-  <h2 class="month">December</h2>
-  <div class="grid-container">
-    <div class="card">
-      <h3>George (G-Man)</h3>
-      <div class="date">1989-12-12</div>
-      <p>Wishing you strength for today and hope for tomorrow. Happy Birthday to a true legend!</p>
-    </div>
-  </div-->
+ 
 
   <button class="add-btn">+</button>
+  <script>
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      const name = card.querySelector('h3').innerText;
+      const date = card.querySelector('.date').innerText;
+
+      fetch('/card-click', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: name, date: date })
+      }).then(response => {
+        if (response.ok) {
+          console.log('Card click sent to server');
+        }
+      });
+    });
+  });
+</script>
+ 
 </body>
 </html>
